@@ -7,7 +7,7 @@ var con = mysql.createConnection(config);
 
 var express = require('express'),
 app = express(),
-const PORT = process.env.PORT || 5000
+var PORT = process.env.PORT || 5000
 
 
 app.use(cors());
