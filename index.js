@@ -33,7 +33,7 @@ app.use(bodyparser.json());
 //get all data from the SQL.
   
     
-app.post('/getusers',(req,res)=>{
+app.get('/getusers',(req,res)=>{
     var sql = "select * from users";
     con.query(sql, function(err,result){
         if(err) throw err;
@@ -42,7 +42,7 @@ app.post('/getusers',(req,res)=>{
     });
 });
 
-app.post('/getrequests',(req,res)=>{
+app.get('/getrequests',(req,res)=>{
     var sql = "select * from fund_requests";
     con.query(sql, function(err,result){
         if(err) throw err;
@@ -53,7 +53,7 @@ app.post('/getrequests',(req,res)=>{
 
 //get specific data from SQL table
 
-app.post('/getuser/:id',(req,res)=>{
+app.get('/getuser/:id',(req,res)=>{
     var urlID = req.params.id;
     var sql = 'select * from users where user_id =?';
     var params = [urlID];
@@ -64,7 +64,7 @@ app.post('/getuser/:id',(req,res)=>{
 });
 
 
-app.post('/getrequest/:id',(req,res)=>{
+app.get('/getrequest/:id',(req,res)=>{
     var urlID = req.params.id;
     var sql = "select * from fund_requests where request_id=?";
     var params = [urlID];
@@ -132,7 +132,7 @@ app.post('/donate',(req,res)=>{
 });
 
 
-app.post('/myDonations/:id',(req,res)=>{
+app.get('/myDonations/:id',(req,res)=>{
     var urlID = req.params.id;
     var sql = "select * from user_donations where user_id=?";
     var params = [urlID];
@@ -156,7 +156,7 @@ app.get('/getadmin_users',(req,res)=>{
 });
 
 
-app.post('/getadmin_user/:id',(req,res)=>{
+app.get('/getadmin_user/:id',(req,res)=>{
     var urlID = req.params.id;
     var sql = 'select * from admin_users where user_id =?';
     var params = [urlID];
@@ -234,7 +234,7 @@ app.get('/viewDonations/:id',(req,res)=>{
 
 
 
-app.post('/newRequest_id',(req,res)=>{
+app.get('/newRequest_id',(req,res)=>{
     var sql = "select request_id from fund_requests order by request_id";
     con.query(sql, function(err,data){
         if (err) throw err;
@@ -244,7 +244,7 @@ app.post('/newRequest_id',(req,res)=>{
 
 
 
-app.post('/view_fund_request/:id',(req,res)=>{
+app.get('/view_fund_request/:id',(req,res)=>{
     var sql = "select request_id, description, requested_amount, created_on from fund_requests where created_by_id=?";
     var params = [req.params.id];
     con.query(sql,params, function(err,result){
