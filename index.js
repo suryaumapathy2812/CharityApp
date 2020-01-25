@@ -7,12 +7,12 @@ var con = mysql.createConnection(config);
 
 var express = require('express'),
 app = express(),
-port = process.env.port || 5000;
+const PORT = process.env.PORT || 5000
 
 
 app.use(cors());
 
-app.listen(port, () => console.log(`Listening on ${ port }`));
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
 const bodyparser = require("body-parser");
